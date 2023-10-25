@@ -37,12 +37,13 @@ public class OrderController {
       return new ResponseEntity<>(orderService.updateOrder(orderShippingDTO), HttpStatus.OK);
     }
 
-    @PutMapping("/update-orders-jpql")
     @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/update-orders-jpql")
     public void getAllOrdersJpql(@RequestBody OrderShippingDTO orderShippingDTO){
         orderService.updateOrderUsingCustomQuery(orderShippingDTO);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void deleteOrderById(@PathVariable int id){
         orderService.deleteOrder(id);
